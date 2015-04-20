@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	margin: 0 auto;
+	background-image: none;
+	position: absolute;
+	left: auto;
+	width:90%;
+	height::auto;
+	margin-left: 50;
+	margin-right: 50;
+	text-align: left;
+	top: 0px;
+}
+
+
+
+#u0_img {
+  position:absolute;
+  left:35%;
+  top:50px;
+  width:492px;
+  height:265px;
+}
+
+
+#h1_title {
+	position: absolute;
+	left: 35%;
+	top: 315px;
+	width: 492px;
+	height: 45px;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+}
+
+#detail_desc {
+	position:absolute;
+	left:35%;
+	top:400px;
+	width:492px;
+	height:auto;
+}
+
+.btn {
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #4dae4a;
+  padding: 10px 40px 10px 40px;
+  text-decoration: none;
+}
+
+
+#btn_div {
+	position:absolute;
+	margin-left:35%;
+	top:500px;
+	
+}
+
+#btn_div a{
+	margin-left:170px;}
+
+#info_dev {
+	position: absolute;
+	height: auto;
+	width: 70%;
+	left: 25%;
+	top: 550px;
+	bottom: 10%;
+}
+
+
+
+#info_data {
+	position: absolute;
+	height: auto;
+	width: 70%;
+	left: 85%;
+	top: 550px;
+	bottom: 10%;
+}
+
+#infro_proj {
+	position:absolute;
+	height:auto;
+	left:52%;
+	top:550px;
+	button:10%;
+}
+
