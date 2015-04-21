@@ -83,13 +83,13 @@
         
    	  <div id="details">
          <p id="details_state_name"></p>
-         <div src="close_cross.png" id="closeBox" onClick="clickToClose()">
+         <div id="closeBox" onClick="clickToClose()">
          <img src="close_cross.png"/>
          <script>
          function clickToClose() {
 			 d3.select("#details").transition().style("opacity", 0);
-					d3.select("#charts").transition().style("opacity", 0);
-					d3.select("#details_state_name").transition().style("opacity", 0);
+					//d3.select("#charts").transition().style("opacity", 0);
+					//d3.select("#details_state_name").transition().style("opacity", 0);
             		d3.select("#details").classed("hidden",true);
 					d3.select("#charts").classed("hidden",true);
 					d3.select("#details_state_name").classed("hidden",true);
@@ -97,6 +97,11 @@
 					d3.select("#charts svg").remove();
 			 }
          </script>
+         </div>
+         <div id="detials_info">
+         	<p>Revenue, from 2002 to 2012</p>
+            <p>US Dollar</p>
+            <p id="compareWithNation">Compare</p>
          </div>
          <div id="charts">
          </div>
@@ -127,7 +132,7 @@
         		mid=Math.round(100*Math.random()), 
         		high=Math.round(100*Math.random());
      			 sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
-          		avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(0.05)}; 
+          		avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(high/100)}; 
     		});
   
   			/* draw states on id #statesvg */ 
@@ -136,7 +141,7 @@
 
 	</div>
       <footer class="site-footer">
-  		<p>Designed and Developed by Wenxin.Z and Bowen.H</p>
+  		<p>Designed and Developed by <a href="mailto:wenxinzh@usc.edu">Wenxin.Z</a> and <a href="mailto:bowenhua@usc.edu">Bowen.H</a></p>
        </footer>
 
 </body>

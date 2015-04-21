@@ -22,13 +22,14 @@ html, body {
   height: 30px; 
 }
 .site-footer {
-  background-color: rgb(77,77,77);
+  background-color: #FFFFFF;
+  opacity:0.6;
   
 }
 .site-footer p{
 	text-align: center;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
-	color:#FFFFFF;
+	color:#000000;
 }
 
 
@@ -82,16 +83,31 @@ html, body {
 	text-align: center;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
 	font-size: 36px;
-	opacity:0;
 	
 }
+
+#detials_info {
+	position:absolute;
+	left:5em;
+	height:220px;
+	width:35em;
+	bottom:2px;
+}
+
+#detials_info p {
+	color: #000000;
+	text-align: left;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size: 20px;
+
+}
+
 #charts {
 	position:absolute;
 	right:5%;
 	bottom:0%;
-	width:400px;
+	width:600px;
 	height:300px;
-	opacity:0;
 }
 
 #closeBox {
@@ -114,6 +130,9 @@ html, body {
 	
 }
 
+#compareWithNation {
+
+}
 
 
 
