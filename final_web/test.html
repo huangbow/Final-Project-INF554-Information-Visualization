@@ -48,58 +48,85 @@
   #tooltip tr td:nth-child(2){
     text-align:center;
   }
+  
+  .axis path,
+            .axis line {
+                fill: none;
+                stroke: black;
+                shape-rendering: crispEdges;
+            }
+            
+            .axis text {
+                font-family: sans-serif;
+                font-size: 8px;
+            }
 </style>
-    <title>Home</title>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+    <title>Public Education Finances in United States</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="test_style.css" type="text/css" rel="stylesheet"/>
-    
-    
   </head>
 
   <body>
-  	<img id="u0_img" class="img " src="images/home/u0.png"/>
-    <p id="u1">&nbsp;Public Education Finances in United States</p>
-        <!-- Unnamed () -->
-  
+  	<div id="u0_img">
+    	<p id="u1">&nbsp;Public Education Finances in United States</p>
+    </div>
+  	    
+  <div class="page-wrap">
       <div id="map" ,class="">
         <svg width="960" height="600" id="statesvg"></svg>
-  </div>
-    </div>
-   <div id="details" class="hidden"></div>
+  		</div>
+        
+   	  <div id="details">
+         <p id="details_state_name"></p>
+         <div id="charts">
+         <script src="revenue.js">
+			revenue.draw();
+         </script>
+         </div>
+      </div>
     
     
-<div id="tooltip"></div><!-- div to hold tooltip. --> <!-- svg to hold the map. -->
-<script src="uStates.js"></script> <!-- creates uStates. -->
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
+		<div id="tooltip"></div><!-- div to hold tooltip. --> <!-- svg to hold the map. -->
+		<script src="uStates.js"></script> <!-- creates uStates. -->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script>
 
-  function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
-    return "<h4>"+n+"</h4><table>"+
-      "<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
-      "<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
-      "<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
-      "</table>";
-  }
+  			function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
+    			return "<h4>"+n+"</h4><table>"+
+      			"<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
+      			"<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
+      			"<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
+      			"</table>";
+  			}
   
-  var sampleData ={}; /* Sample random data. */ 
-  ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-  "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
-  "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
-  "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
-  "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
-    .forEach(function(d){ 
-      var low=Math.round(100*Math.random()), 
-        mid=Math.round(100*Math.random()), 
-        high=Math.round(100*Math.random());
-      sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
-          avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(0.05)}; 
-    });
+  			var sampleData ={}; /* Sample random data. */ 
+  			["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+  				"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+  				"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+  				"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+  				"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+    		.forEach(function(d){ 
+      			var low=Math.round(100*Math.random()), 
+        		mid=Math.round(100*Math.random()), 
+        		high=Math.round(100*Math.random());
+     			 sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+          		avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(0.05)}; 
+    		});
   
-  /* draw states on id #statesvg */ 
-  uStates.draw("#statesvg", sampleData, tooltipHtml);
-</script>
+  			/* draw states on id #statesvg */ 
+  			uStates.draw("#statesvg", sampleData, tooltipHtml);
+		</script>
+
+	</div>
+      <footer class="site-footer">
+  		<p>Designed and Developed by Wenxin.Z and Bowen.H</p>
+       </footer>
 
 </body>
+
 </html>

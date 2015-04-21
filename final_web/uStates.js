@@ -257,7 +257,7 @@
     }
     ];
     var uStates = {};
-
+	var statClick = null;
     uStates.draw = function(id, data, toolTip) {
         function mouseOver(d) {
             d3.select("#tooltip").transition().duration(200).style("opacity", .9);
@@ -266,13 +266,43 @@
             .style("left", (d3.event.pageX) + "px") 
             .style("top", (d3.event.pageY - 28) + "px");
 
-            d3.select("#details").transition().duration(200).style("opacity", .9);
-            d3.select("#details").classed("hidden",false);
+            
+        }
+
+        function onclick(d) {
+			//if click a new state
+			if (statClick != d) {
+				console.log(d['n']);
+				d3.select('#details').transition().duration(1000).style("opacity", .9);
+				d3.select('#charts').transition().duration(1000).style("opacity", .9);
+				d3.select('#details_state_name').transition().duration(1000).style("opacity", .9);
+            	d3.select('#details').classed("hidden",false);
+				d3.select('#charts').classed("hidden",false);
+				d3.select('#details_state_name').classed("hidden",false);
+            	d3.select('.site-footer').classed("hidden",true);
+				d3.select("#details_state_name")
+					.text(""+d['n']);
+				
+					
+				statClick = d;
+				//if click the same state
+				}else {
+					d3.select("#details").transition().style("opacity", 0);
+					d3.select("#charts").transition().style("opacity", 0);
+					d3.select("#details_state_name").transition().style("opacity", 0);
+            		d3.select("#details").classed("hidden",true);
+					d3.select("#charts").classed("hidden",true);
+					d3.select("#details_state_name").classed("hidden",true);
+					d3.select('.site-footer').classed("hidden",false);
+					statClick = null;
+					
+				}
+            
         }
 
         function mouseOut() {
             d3.select("#tooltip").transition().duration(500).style("opacity", 0);
-            d3.select("#details").classed("hidden",true);
+            
         }
 
         d3.select(id).selectAll(".state")
@@ -282,7 +312,8 @@
         .style("fill", function(d) {
             return data[d.id].color;
         })
-        .on("mouseover", mouseOver).on("mouseout", mouseOut);
+        .on("mouseover", mouseOver).on("mouseout", mouseOut)
+        .on("click",onclick);
     }
     this.uStates = uStates;
 })();
