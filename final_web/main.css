@@ -1,19 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
-body {
-	margin: 0 auto;
-	background-image: none;
-	position: absolute;
-	left: auto;
+html, body {
+	position:absolute;
+	
 	width:90%;
-	height::auto;
-	margin-left: 50;
-	margin-right: 50;
-	text-align: left;
-	top: 0px;
+	height:100%;
 }
-
-
 
 #u0_img {
   position:absolute;

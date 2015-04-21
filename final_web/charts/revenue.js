@@ -1,12 +1,12 @@
-    var revenue = {};
-    revenue.draw = function() {
-    var w = 400;
+	var revenue = {};
+	revenue.draw = function(name) {
+	var w = 400;
         var h = 300;
         var margin = { left: w/8, other:w/10 }
         var width = w/44;
 
         //Create SVG element
-        var svg = d3.select("#test")
+        var svg = d3.select("#charts")
                     .append("svg")
                     .attr("width", w)
                     .attr("height", h);
@@ -177,6 +177,6 @@
 
             });
         });
-        
+		
 }
-    revenue.draw(); 
+	revenue.draw(); 
