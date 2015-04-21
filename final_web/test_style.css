@@ -49,7 +49,7 @@ html, body {
 	width: 960px;
 	height: 37px;
 	color: #FFFFFF;
-	
+	text-align: center;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
 	font-size: 36px;
 	}
@@ -74,9 +74,9 @@ html, body {
 #details_state_name {
 	position:absolute;
 	background-color:orange;
-	left:5%;
+	left:30px;
 	height:40px;
-	width:200px;
+	width:240px;
 	bottom:240px;
 	color: #FFFFFF;
 	text-align: center;
@@ -93,6 +93,18 @@ html, body {
 	height:300px;
 	opacity:0;
 }
+
+#closeBox {
+	position:absolute;
+	left:282px;
+	height:40px;
+	width:40px;
+	bottom:240px;
+}
+
+#closeBox img {
+	max-height:95%;
+	max-width:95%;
 
 .hidden {
 	display: none;

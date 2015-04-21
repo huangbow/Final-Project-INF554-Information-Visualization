@@ -83,6 +83,20 @@
         
    	  <div id="details">
          <p id="details_state_name"></p>
+         <div src="close_cross.png" id="closeBox" onClick="clickToClose()">
+         <img src="close_cross.png"/>
+         <script>
+         function clickToClose() {
+			 d3.select("#details").transition().style("opacity", 0);
+					d3.select("#charts").transition().style("opacity", 0);
+					d3.select("#details_state_name").transition().style("opacity", 0);
+            		d3.select("#details").classed("hidden",true);
+					d3.select("#charts").classed("hidden",true);
+					d3.select("#details_state_name").classed("hidden",true);
+					d3.select('.site-footer').classed("hidden",false);
+			 }
+         </script>
+         </div>
          <div id="charts">
          <script src="revenue.js">
 			revenue.draw();
