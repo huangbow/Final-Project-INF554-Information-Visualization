@@ -1,6 +1,6 @@
 (function() {
     bar_chart_state = function(filename,countryname){
-        var w = 400;
+        var w = 600;
         var h = 300;
         var margin = { left: w/2, other:h/10 }
         var width = w/70;
@@ -8,7 +8,7 @@
         else var catagory = "Expenditure";
 
         //Create SVG element
-        var svg = d3.select("body")
+        var svg = d3.select("#testit")
                     .append("svg")
                     .attr("width", w)
                     .attr("height", h);
@@ -16,6 +16,8 @@
         var dataset = [];
         var average = [];
         var sign = 1;
+		var Min;
+		var Max;
 
         d3.json(filename, function(json) { 
             for (var i = 0; i < json.length; i++){
@@ -133,11 +135,7 @@
                // .attr("font-family", "sans-serif")
                // .attr("font-size", "15px")
                // .attr("fill", "black");
-            svg.append("text")
-                .text("Public Elementary-Secondary School")
-                .attr("class","title")
-                .attr("x", 10)
-                .attr("y", h/6);
+            
                // .attr("font-family", "sans-serif")
                // .attr("font-size", "15px")
                // .attr("fill", "black");
@@ -158,7 +156,7 @@
             d3.select("p").on("click", function() {
                 if (sign == 1){
                     yScale.domain([Min*0.9, Max*1.05]);
-
+					
                     svg.selectAll("rect")
                         .data(dataset)
                         .transition()

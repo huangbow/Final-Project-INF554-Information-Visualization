@@ -264,7 +264,8 @@
         var w = 600;
         var h = 300;
         var margin = { left: w/2, other:h/10 }
-        var width = w/70;
+        var width_single = w/40;
+		var width_double = w/70;
         if (filename == "revenue.json") var catagory = "Revenue";
         else var catagory = "Expenditure";
 
@@ -277,6 +278,8 @@
         var dataset = [];
         var average = [];
         var sign = 1;
+		var Min;
+		var Max;
 
         d3.json(filename, function(json) { 
             for (var i = 0; i < json.length; i++){
@@ -316,6 +319,7 @@
             max_avg = d3.max(average, function(d) { return d; })
             Min = Math.min(min_data,min_avg)
             Max = Math.max(max_data,max_avg)
+			console.log(Min);
 
             var xScale = d3.scale.ordinal()
                     .domain([2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012])
@@ -342,12 +346,12 @@
                     .enter()
                     .append("rect")
                     .attr("x", function(d, i) {
-                        return (xScale(2002+i) + xScale.rangeBand()/2 - width/2);
+                        return (xScale(2002+i) + xScale.rangeBand()/2 - width_single/2);
                     })
                     .attr("y", function(d) {
                         return yScale(d);
                     })
-                    .attr("width", width)
+                    .attr("width", width_single)
                     .attr("height", function(d) {
                         return yScale(min_data*0.9)-yScale(d);
                     })
@@ -361,28 +365,28 @@
                             var yPosition = mouse_coordinates[1]-50;
 
                             //Update the tooltip position and value
-                            d3.select("#tooltip")
+                            d3.select("#tooltip1")
                                 .style("left", xPosition+"px")
                                 .style("top", yPosition+"px")                        
                                 .select("#catagory")
                                 .text(catagory);
 
                             //Update the tooltip position and value
-                            d3.select("#tooltip")                   
+                            d3.select("#tooltip1")                   
                                 .select("#country")
                                 .text(countryname + " in " + (2002+i));
 
                             //Update the tooltip position and value
-                            d3.select("#tooltip")                   
+                            d3.select("#tooltip1")                   
                                 .select("#value")
                                 .text("$ "+Math.floor(d/1000000)+"M");
 
                             //Show the tooltip
-                            d3.select("#tooltip").classed("hidden", false);
+                            d3.select("#tooltip1").classed("hidden", false);
                     })
                     .on("mouseout", function(d,i) {
                             //Hide the tooltip
-                            d3.select("#tooltip").classed("hidden", true);
+                            d3.select("#tooltip1").classed("hidden", true);
                             d3.select(this).transition().duration(500).attr("fill", "rgb(62, 237, 231)");
                     });
 
@@ -408,20 +412,20 @@
                     .attr("transform", "translate(" + margin.left + ",0)")
                     .call(yAxis);
 
-            d3.select("#compareWithNation").on("click", function() {
+            d3.select("#myonoffswitch").on("click", function() {
                 if (sign == 1){
                     yScale.domain([Min*0.9, Max*1.05]);
-
                     svg.selectAll("rect")
                         .data(dataset)
                         .transition()
                         .duration(1000)
                         .attr("x", function(d, i) {
-                            return (xScale(2002+i) + xScale.rangeBand()/2 - width*1.1);
+                            return (xScale(2002+i) + xScale.rangeBand()/2 - width_double*1.1);
                         })
                         .attr("y", function(d) {
                             return yScale(d);
                         })
+						.attr("width", width_double)
                         .attr("height", function(d) {
                             return yScale(Min*0.9)-yScale(d);
                         });
@@ -432,12 +436,12 @@
                         .append("rect")
                         .attr("class","avg")
                         .attr("x", function(d, i) {
-                            return (xScale(2002+i) + xScale.rangeBand()/2+width*0.1);
+                            return (xScale(2002+i) + xScale.rangeBand()/2+width_double*0.1);
                         })
                         .attr("y", function(d) {
                             return yScale(d);
                         })
-                        .attr("width", width)
+                        .attr("width", width_double)
                         .attr("height", function(d) {
                             return yScale(Min*0.9)-yScale(d);
                         })
@@ -450,36 +454,36 @@
                             var yPosition = mouse_coordinates[1]-50;
 
                             //Update the tooltip position and value
-                            d3.select("#tooltip")
+                            d3.select("#tooltip1")
                                 .style("left", xPosition+"px")
                                 .style("top", yPosition+"px")                        
                                 .select("#catagory")
                                 .text(catagory);
 
                             //Update the tooltip position and value
-                            d3.select("#tooltip")                   
+                            d3.select("#tooltip1")                   
                                 .select("#country")
                                 .text("U.S. Average in " + (2002+i));
 
                             //Update the tooltip position and value
-                            d3.select("#tooltip")                   
+                            d3.select("#tooltip1")                   
                                 .select("#value")
                                 .text("$ "+Math.floor(d/1000000)+"M");
 
 
                             //Show the tooltip
-                            d3.select("#tooltip").classed("hidden", false);
+                            d3.select("#tooltip1").classed("hidden", false);
                         })
                         .on("mouseout", function(d,i) {
                             //Hide the tooltip
                             d3.select(this).transition().duration(500).attr("fill", "rgb(239, 122, 130)")
-                            d3.select("#tooltip").classed("hidden", true);
+                            d3.select("#tooltip1").classed("hidden", true);
                         });
 
                     svg.append("rect")
                         .attr("class","avg")
-                        .attr("x", 10)
-                        .attr("y", h/3)
+                        .attr("x", 5)
+                        .attr("y", h/5)
                         .attr("width", w/20)
                         .attr("height", h/15)
                         .attr("fill", "rgb(62, 237, 231)");
@@ -487,13 +491,13 @@
                     svg.append("text")
                         .text(countryname)
                         .attr("class","avg")
-                        .attr("x", w/20 + 30)
-                        .attr("y", h/3 + 15);
+                        .attr("x", w/20 + 10)
+                        .attr("y", h/5 + 15);
 
                     svg.append("rect")
                         .attr("class","avg")
                         .attr("x", w/5)
-                        .attr("y", h/3)
+                        .attr("y", h/5)
                         .attr("width", w/20)
                         .attr("height", h/15)
                         .attr("fill", "rgb(239, 122, 130)");
@@ -501,8 +505,8 @@
                     svg.append("text")
                         .text("U.S. Average")
                         .attr("class","avg")
-                        .attr("x", w/5 + w/20 + 20)
-                        .attr("y", h/3 + 15);
+                        .attr("x", w/5 + w/20 + 10)
+                        .attr("y", h/5 + 15);
 
 
                     sign = 0;
@@ -516,11 +520,12 @@
                         .transition()
                         .duration(1000)
                         .attr("x", function(d, i) {
-                            return (xScale(2002+i) + xScale.rangeBand()/2 - width/2);
+                            return (xScale(2002+i) + xScale.rangeBand()/2 - width_single/2);
                         })
                         .attr("y", function(d) {
                             return yScale(d);
                         })
+						.attr("width", width_single)
                         .attr("height", function(d) {
                             return yScale(min_data*0.9)-yScale(d);
                         });
@@ -541,6 +546,10 @@
 
             });
         }); 
+		
+		d3.select("#categorySign").text(function(d) {
+				return catagory+", from 2002 to 2012";
+			});
 }
 
 	bar_chart.total_small = function(filename){
@@ -806,6 +815,7 @@
                 .attr("transform", "translate(" + margin.left + ",0)")
                 .call(yAxis);
         });
+		
 
 }
 

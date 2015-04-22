@@ -50,13 +50,13 @@
   }
   
   .axis path,
-            .axis line {
+  .axis line {
                 fill: none;
                 stroke: black;
                 shape-rendering: crispEdges;
-            }
+          }
             
-            .axis text {
+   .axis text {
                 font-family: sans-serif;
                 font-size: 8px;
             }
@@ -69,12 +69,15 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="test_style.css" type="text/css" rel="stylesheet"/>
+    <link href="swithButton.css" type="text/css" rel="stylesheet"/>
+    <link href="css/chartsRelated.css" type="text/css" rel="stylesheet"/>
   </head>
 
   <body>
   	<div id="u0_img">
     	<p id="u1">&nbsp;Public Education Finances in United States</p>
     </div>
+    
   	    
   <div class="page-wrap">
       <div id="map" ,class="">
@@ -83,11 +86,38 @@
         
    	  <div id="details">
          <p id="details_state_name"></p>
+         
+         
          <div id="closeBox" onClick="clickToClose()">
-         <img src="close_cross.png"/>
-         <script>
-         function clickToClose() {
-			 d3.select("#details").transition().style("opacity", 0);
+         	<img src="close_cross.png"/>
+         	<script>
+         	
+         	</script>
+         </div>
+         <div id="detials_info">
+         	<div id="compareWithNation">Compare with the U.S
+            <div class="onoffswitch">
+    			<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="checkButton()">
+   				 <label class="onoffswitch-label" for="myonoffswitch">
+        				<span class="onoffswitch-inner"></span>
+        				<span class="onoffswitch-switch"></span>
+    				</label>
+                   <script>
+				   var state=0;
+				   function checkButton() {
+					   if (state==0){
+						   d3.select('#myonoffswitch').attr('checked','');
+						   state = 1;
+						   
+						   }else {
+							   d3.select('#myonoffswitch').attr('checked',null);
+							   state=0;
+							   }
+				   		
+				   }
+				   
+				   function clickToClose() {
+			 			d3.select("#details").transition().style("opacity", 0);
 					//d3.select("#charts").transition().style("opacity", 0);
 					//d3.select("#details_state_name").transition().style("opacity", 0);
             		d3.select("#details").classed("hidden",true);
@@ -95,15 +125,28 @@
 					d3.select("#details_state_name").classed("hidden",true);
 					d3.select('.site-footer').classed("hidden",false);
 					d3.select("#charts svg").remove();
+					d3.select('#myonoffswitch').attr('checked',null);
+					console.log(state);
+					state=0;
 			 }
-         </script>
-         </div>
-         <div id="detials_info">
-         	<p>Revenue, from 2002 to 2012</p>
+				   
+				   
+				   
+				   </script>
+			</div>
+            </div>
+            
+            <p>&nbsp;</p>
+         	<p id="categorySign"></p>
             <p>US Dollar</p>
-            <p id="compareWithNation">Compare</p>
+            
          </div>
          <div id="charts">
+         	<div id="tooltip1" class="hidden">
+            <p><span id="catagory">Revenue</p>
+            <p><span id="country">100</span></p>
+            <p><span id="value">100</span></p>
+    	</div>
          </div>
       </div>
     
