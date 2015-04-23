@@ -12,14 +12,14 @@ html, body {
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -30px; 
+  margin-bottom: -20px; 
 }
 .page-wrap:after {
   content: "";
   display: block;
 }
 .site-footer, .page-wrap:after {
-  height: 30px; 
+  height: 20px; 
 }
 .site-footer {
   background-color: #FFFFFF;
@@ -56,7 +56,7 @@ html, body {
 	}
 #map {
   position:absolute;
-  left:10%;
+  left:15%;
   top:70px;
   width:960px;
   height:600px;
@@ -105,11 +105,26 @@ html, body {
 #charts {
 	position:absolute;
 	text-align:right;
-	right:5%;
+	right:5em;
 	bottom:0%;
 	width:800px;
 	height:300px;
 }
+
+#arrow-forward {
+	position:absolute;
+	right:3em;
+	bottom: 130px;
+	height:40px;
+	width:20px;
+	
+	}
+#arrow-forward button {
+	max-height:100%;
+	mzx-width:100%;
+}
+
+
 
 #closeBox {
 	position:absolute;
@@ -144,6 +159,78 @@ html, body {
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
 	font-size: 20px;
 }
+
+
+#yearList {
+	position:absolute;
+	left:0;
+	top:70px;
+	width:200px;
+	background-color:rgb(77,77,77);
+	height:100%;
+	opacity:0;
+	
+}
+
+#categoryButton1 {
+	background-color:orange;
+	margin-bottom:3px;
+	margin:2px;
+	color:black;
+	width:95%;
+	float:left;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size:20px;
+
+}
+
+#categoryButton2 {
+	background-color:orange;
+	margin-bottom:3px;
+	margin:2px;
+	color:black;
+	width:95%;
+	float:left;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size:20px;
+
+}
+
+
+
+#yearSpan {
+	position:absolute;
+	left:0;
+	top:100px;
+	width:200px;
+}
+
+
+#yearSpan p {
+	color: white;
+	font-size:20px;
+	text-align:center;
+	background-color:orange;
+	margin:4px;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+
+}
+
+#yearListButton {
+	position: absolute;
+	top:10px;
+	left:20px;
+	width:50px;
+	height:50px;
+
+}
+
+#yearListButton img{
+	max-height:95%;
+	max-width:95%;
+}
+
+
 
 
 

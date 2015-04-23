@@ -260,6 +260,48 @@
 	var statClick = null;
 	
 	var bar_chart = {};
+	var cname = "";
+	var filename="";
+	
+	d3.select("#yearList").selectAll("#categoryButton1")
+		.on("click",categorySelect1);
+	d3.select("#yearList").selectAll("#categoryButton2")
+		.on("click",categorySelect2);
+		
+		
+	d3.select("#details").selectAll("#arrow-forward")
+		.on("click",arrowForward);
+	
+	
+	function categorySelect1() {
+		var selectValue = document.getElementById('categoryButton1').getAttribute('value');
+		console.log(selectValue);
+		filename=selectValue;
+		}
+	function categorySelect2() {
+		var selectValue = document.getElementById('categoryButton2').getAttribute('value');
+		console.log(selectValue);
+		filename=selectValue;
+		}
+		
+	function arrowForward() {
+		console.log(filename);
+		if (filename!="") {
+			if (filename=="expend.json") {
+				 d3.select("#charts svg").remove();
+				 filename="revenue.json";
+				 bar_chart.state(filename,cname);
+				} else {
+					d3.select("#charts svg").remove();
+					filename="expend.json";
+				 bar_chart.state(filename,cname);
+					}
+			} else{
+				console.log('Cannot go foward because of no specific filename');
+			}
+		
+		}
+	
     bar_chart.state = function(filename,countryname){
         var w = 600;
         var h = 300;
@@ -819,6 +861,8 @@
 
 }
 
+		
+
 
 	
     uStates.draw = function(id, data, toolTip) {
@@ -835,7 +879,9 @@
         function onclick(d) {
 			//if click a new state
 			if (statClick != d) {
+				cname=d['n'];
 				console.log(d['n']);
+				
 				d3.select('#details').transition().duration(1000).style("opacity", .9);
 				//d3.select('#charts').transition().duration(1000).style("opacity", .9);
 				//d3.select('#details_state_name').transition().duration(1000).style("opacity", .9);
@@ -849,7 +895,14 @@
 				
 				d3.select("#charts svg").remove();
 				//revenue.draw(d['n']);
-				bar_chart.state("expend.json",d['n']);
+				
+				if (filename!="") {
+					console.log("ab_"+filename);
+					bar_chart.state(filename,cname);
+					} else {
+						console.log("set category!!!!");
+						}
+				
 					
 				statClick = d;
 				
@@ -863,6 +916,7 @@
 					d3.select("#details_state_name").classed("hidden",true);
 					d3.select('.site-footer').classed("hidden",false);
                     d3.select("#charts svg").remove();
+					cname="";
 					
 					
 					d3.select('#detials_info').classed("hidden",true);
@@ -872,6 +926,9 @@
 				}
             
         }
+		
+		
+		
 
         function mouseOut() {
             d3.select("#tooltip").transition().duration(500).style("opacity", 0);
@@ -883,12 +940,77 @@
             return d.d;
         })
         .style("fill", function(d) {
-            return data[d.id].color;
+            return "#FFFFFF";
         })
         .on("mouseover", mouseOver).on("mouseout", mouseOut)
         .on("click",onclick);
     }
     this.uStates = uStates;
+	
+	
+	d3.csv("expend_year.csv",function(data) {
+		//for (var i = 0; i < data.length; i++){
+				d3.select("#yearSpan").selectAll('p')
+				.data(data)
+				.enter()
+				.append('a')
+				.attr('href','#')
+				.attr('style',"text-decoration:none")
+				.append('p')
+				.text(function(d) {
+					return d.year;
+					})
+				.on("click", function(d) {
+					console.log(d.year);
+					clickyear(d.year);
+					});
+				}
+			//}
+			);
+	
+		function clickyear(year) {
+			//year=2008;	
+			d3.csv("expend_year.csv",function(data) {
+		for (var i = 0; i < data.length; i++){
+            if (data[i].year == year )  datasets = data[i]
+            } 
+			
+		var max_state = 0;
+        var min_state = Infinity;
+  			
+  			["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+  				"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+  				"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+  				"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+  				"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+    		.forEach(function(d,i){
+        		max_state = d3.max([max_state,+datasets[d]])
+        		min_state = d3.min([min_state,+datasets[d]])
+        // console.log(min_state,max_state);
+      });
+        var Scale = d3.scale.linear()
+                    .domain([min_state,max_state])
+                    .range([0,1]);
+        ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+          "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+          "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+          "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+          "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+        .forEach(function(d,i){
+           datasets[d] = (Scale(datasets[d])); 
+		   
+        });
+		d3.select("#statesvg").selectAll("path").data(uStatePaths)
+						.transition().duration(50)
+						.style("fill", function(d) {
+							return d3.interpolate("#c9f2c2", "#058590")(datasets[d.id]);					
+		});
+
+		});
+		}
+		
+		
+	
 })();
 
 

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
   <head>
-    <style>
+  <style>
   .state{
     fill: none;
     stroke: #a9a9a9;
@@ -48,145 +48,235 @@
   #tooltip tr td:nth-child(2){
     text-align:center;
   }
-  
+
   .axis path,
   .axis line {
-                fill: none;
-                stroke: black;
-                shape-rendering: crispEdges;
-          }
-            
-   .axis text {
-                font-family: sans-serif;
-                font-size: 8px;
-            }
-</style>
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+
+  .axis text {
+    font-family: sans-serif;
+    font-size: 8px;
+  }
+  </style>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 
-    <title>Public Education Finances in United States</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link href="test_style.css" type="text/css" rel="stylesheet"/>
-    <link href="swithButton.css" type="text/css" rel="stylesheet"/>
-    <link href="css/chartsRelated.css" type="text/css" rel="stylesheet"/>
+  <title>Public Education Finances in United States</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link href="test_style.css" type="text/css" rel="stylesheet"/>
+  <link href="swithButton.css" type="text/css" rel="stylesheet"/>
+  <link href="css/chartsRelated.css" type="text/css" rel="stylesheet"/>
   </head>
 
   <body>
-  	<div id="u0_img">
-    	<p id="u1">&nbsp;Public Education Finances in United States</p>
-    </div>
-    
-  	    
+  <script src="css/uStates.js"></script> <!-- creates uStates. -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <div id="u0_img">
+   <p id="u1">&nbsp;Public Education Finances in United States</p>
+  </div>
+
+  <script>
+  var temp=0;
+  function showSideBar() {
+  if (temp == 0) {
+   d3.select('#yearList').transition().duration(1000).style("opacity", .9);
+   d3.select('#yearList').classed("hidden",false);
+   temp = 1;
+  } else {
+  d3.select('#yearList').classed("hidden",true);
+  d3.select('#yearList').transition().duration(1000).style("opacity", 0);
+  temp = 0;
+
+  }
+
+
+  }
+
+  </script>
+
   <div class="page-wrap">
-      <div id="map" ,class="">
-        <svg width="960" height="600" id="statesvg"></svg>
-  		</div>
+  <div id="yearList">
+   <a href="#" style="text-decoration:none"><div id="categoryButton1" value="expend.json">Expenditure</div></a>
+   <a href="#" style="text-decoration:none"><div id="categoryButton2" value="revenue.json">Revenue</div></a>
+   <div id="yearSpan"></div>
+   <script src="css/uStates.js"></script>
+  </div>
+  <div id="map" ,class="">
+  <svg width="960" height="600" id="statesvg"></svg>
+  </div>
+  <a href="#"><div id="yearListButton" onClick="showSideBar()">
+  <img src="images/check.svg"/>
+  </div></a>
+  <div id="details">
+  <a href="#"><div id="arrow-forward" type="button">
+   <img src="images/arrow-forward.svg"/>
+  </div></a>
+  <script src="css/uStates.js"></script>
+
+  <p id="details_state_name"></p>
+  <a href="#"><div id="closeBox" onClick="clickToClose()">
+  <img src="close_cross.png"/>
+  </div></a>
+  <div id="detials_info">
+  <div id="compareWithNation">Compare with the U.S
+    <div class="onoffswitch">
+     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="checkButton()">
+     <label class="onoffswitch-label" for="myonoffswitch">
+      <span class="onoffswitch-inner"></span>
+      <span class="onoffswitch-switch"></span>
+    </label>
+    <script>
+    var state=0;
+    function checkButton() {
+      if (state==0){
+       d3.select('#myonoffswitch').attr('checked','');
+       state = 1;
+       
+     }else {
+      d3.select('#myonoffswitch').attr('checked',null);
+      state=0;
+    }
+    
+  }
+
+  function clickToClose() {
+   d3.select("#details").transition().style("opacity", 0);
+  				//d3.select("#charts").transition().style("opacity", 0);
+  				//d3.select("#details_state_name").transition().style("opacity", 0);
+          d3.select("#details").classed("hidden",true);
+          d3.select("#charts").classed("hidden",true);
+          d3.select("#details_state_name").classed("hidden",true);
+          d3.select('.site-footer').classed("hidden",false);
+          d3.select("#charts svg").remove();
+          d3.select('#myonoffswitch').attr('checked',null);
+          console.log(state);
+          state=0;
+        }
         
-   	  <div id="details">
-         <p id="details_state_name"></p>
-         
-         
-         <div id="closeBox" onClick="clickToClose()">
-         	<img src="close_cross.png"/>
-         	<script>
-         	
-         	</script>
-         </div>
-         <div id="detials_info">
-         	<div id="compareWithNation">Compare with the U.S
-            <div class="onoffswitch">
-    			<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="checkButton()">
-   				 <label class="onoffswitch-label" for="myonoffswitch">
-        				<span class="onoffswitch-inner"></span>
-        				<span class="onoffswitch-switch"></span>
-    				</label>
-                   <script>
-				   var state=0;
-				   function checkButton() {
-					   if (state==0){
-						   d3.select('#myonoffswitch').attr('checked','');
-						   state = 1;
-						   
-						   }else {
-							   d3.select('#myonoffswitch').attr('checked',null);
-							   state=0;
-							   }
-				   		
-				   }
-				   
-				   function clickToClose() {
-			 			d3.select("#details").transition().style("opacity", 0);
-					//d3.select("#charts").transition().style("opacity", 0);
-					//d3.select("#details_state_name").transition().style("opacity", 0);
-            		d3.select("#details").classed("hidden",true);
+        var temp=0;
+        function showSideBar() {
+          if (temp == 0) {
+           d3.select('#yearList').transition().duration(1000).style("opacity", .9);
+           d3.select('#yearList').classed("hidden",false);
+           temp = 1;
+         } else {
+           d3.select('#yearList').classed("hidden",true);
+           d3.select('#yearList').transition().duration(1000).style("opacity", 0);
+           temp = 0;
+         }
+       }
+       
+       
+       
+       </script>
+     </div>
+   </div>
+   
+   <p>&nbsp;</p>
+   <p id="categorySign"></p>
+   <p>US Dollar</p>
+   
+  </div>
+  <div id="charts">
+  <div id="tooltip1" class="hidden">
+    <p><span id="catagory">Revenue</p>
+    <p><span id="country">100</span></p>
+    <p><span id="value">100</span></p>
+  </div>
+  </div>
+
+
+
+  </div>
+
+
+  <div id="tooltip"></div><!-- div to hold tooltip. --> <!-- svg to hold the map. -->
+  <script>
+  function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
+  return "<h4>"+n+"</h4>";
+  }
+
+
+
+  function map_draw(year) {
+  d3.csv("expend_year.csv",function(data){
+
+  for (var i = 0; i < data.length; i++){
+    if (data[i].year == year )  dataset = data[i]
+  }   
+
+  console.log(dataset);
+          // var Scale = d3.scale.linear()
+          //           .domain([d3.min(dataset),d3.max(dataset)])
+          //           .range([0,1]);
+
+          var max_state = 0;
+          var min_state = Infinity;
+          var sampleData ={}; /* Sample random data. */ 
+          ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+          "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+          "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+          "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+          "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+          .forEach(function(d,i){
+            max_state = d3.max([max_state,+dataset[d]])
+            min_state = d3.min([min_state,+dataset[d]])
+        // console.log(min_state,max_state);
+      });
+          var Scale = d3.scale.linear()
+          .domain([min_state,max_state])
+          .range([0,1]);
+          ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+          "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+          "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+          "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+          "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+          .forEach(function(d,i){
+        // max_state = d3.max([max_state,dataset[d]])
+        // min_state = d3.min([min_state,dataset[d]])
+          // console.log(dataset[d]);
+          var low=Math.round(100*Math.random()), 
+          mid=Math.round(100*Math.random()), 
+          high=Math.round(100*Math.random());
+          sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+           avg:Math.round((low+mid+high)/3), color:d3.interpolate("#c9f2c2", "#058590")(Scale(dataset[d]))
+           
+         }; 
+             // console.log(Scale(dataset[d]));
+           });
+        // console.log(min_state,max_state);
+        
+        /* draw states on id #statesvg */ 
+        uStates.draw("#statesvg", sampleData, tooltipHtml);
+        
+      });
+
+  }
+
+
+
+  var year = 2012;
+  map_draw(year);
+  
+  
+  d3.select("#details").classed("hidden",true);
 					d3.select("#charts").classed("hidden",true);
 					d3.select("#details_state_name").classed("hidden",true);
 					d3.select('.site-footer').classed("hidden",false);
-					d3.select("#charts svg").remove();
-					d3.select('#myonoffswitch').attr('checked',null);
-					console.log(state);
-					state=0;
-			 }
-				   
-				   
-				   
-				   </script>
-			</div>
-            </div>
-            
-            <p>&nbsp;</p>
-         	<p id="categorySign"></p>
-            <p>US Dollar</p>
-            
-         </div>
-         <div id="charts">
-         	<div id="tooltip1" class="hidden">
-            <p><span id="catagory">Revenue</p>
-            <p><span id="country">100</span></p>
-            <p><span id="value">100</span></p>
-    	</div>
-         </div>
-      </div>
-    
-    
-		<div id="tooltip"></div><!-- div to hold tooltip. --> <!-- svg to hold the map. -->
-		<script src="uStates.js"></script> <!-- creates uStates. -->
-		<script src="http://d3js.org/d3.v3.min.js"></script>
-		<script>
-
-  			function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
-    			return "<h4>"+n+"</h4><table>"+
-      			"<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
-      			"<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
-      			"<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
-      			"</table>";
-  			}
   
-  			var sampleData ={}; /* Sample random data. */ 
-  			["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-  				"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
-  				"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
-  				"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
-  				"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
-    		.forEach(function(d){ 
-      			var low=Math.round(100*Math.random()), 
-        		mid=Math.round(100*Math.random()), 
-        		high=Math.round(100*Math.random());
-     			 sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
-          		avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(high/100)}; 
-    		});
   
-  			/* draw states on id #statesvg */ 
-  			uStates.draw("#statesvg", sampleData, tooltipHtml);
-		</script>
+  </script>
 
-	</div>
-      <footer class="site-footer">
-  		<p>Designed and Developed by <a href="mailto:wenxinzh@usc.edu">Wenxin.Z</a> and <a href="mailto:bowenhua@usc.edu">Bowen.H</a></p>
-       </footer>
+  </div>
+  <footer class="site-footer">
+  <p>Designed and Developed by <a href="mailto:wenxinzh@usc.edu">Wenxin.Z</a> and <a href="mailto:bowenhua@usc.edu">Bowen.H</a></p>
+  </footer>
 
-</body>
+  </body>
 
-</html>
+  </html>
