@@ -1,7 +1,7 @@
 !function(){
 	var bP={};	
-	var b=30, bb=150, height=1000, buffMargin=1, minHeight=10,start = 25;
-	var c1=[-100, 60], c2=[-15, 205], c3=[20, 245]; //Column positions of labels.
+	var b=30, bb=130, height=1000, buffMargin=1, minHeight=10,start = 5;
+	var c1=[-130, 40], c2=[-35, 205], c3=[0, 240]; //Column positions of labels.
 	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
 	
 	bP.partData = function(data,p){
@@ -130,7 +130,7 @@
 			
 		mainbar.append("text").attr("class","barpercent")
 			.attr("x", c3[p]).attr("y",function(d){ return d.middle+5;})
-			.text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;})
+			.text(function(d,i){ return "("+Math.round(100*d.percent)+"%)" ;})
 			.attr("text-anchor","end").style("fill","grey");
 			
 		d3.select("#"+id).select(".part"+p).select(".subbars")
@@ -152,7 +152,7 @@
 	
 	function drawHeader(header, id){
 		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
-			.style("font-size","20").attr("x",130).attr("y",-20).style("text-anchor","middle")
+			.style("font-size","20").attr("x",110).attr("y",-20).style("text-anchor","middle")
 			.style("font-weight","bold");
 		
 		[0,1].forEach(function(d){
@@ -164,8 +164,8 @@
 			h.append("text").text("Count").attr("x", (c2[d]-20))
 				.attr("y", -5).style("fill","grey");
 			
-			h.append("line").attr("x1",c1[d]-10).attr("y1", -2)
-				.attr("x2",c3[d]+10).attr("y2", -2).style("stroke","black")
+			h.append("line").attr("x1",c1[d]-5).attr("y1", -2)
+				.attr("x2",c3[d]+5).attr("y2", -2).style("stroke","black")
 				.style("stroke-width","1").style("shape-rendering","crispEdges");
 		});
 	}
@@ -190,7 +190,7 @@
 			
 		mainbar.select(".barpercent").transition().duration(500)
 			.attr("y",function(d){ return d.middle+5;})
-			.text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;});
+			.text(function(d,i){ return "("+Math.round(100*d.percent)+"%)" ;});
 			
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p])
