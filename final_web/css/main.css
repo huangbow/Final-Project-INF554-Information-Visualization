@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+#u0_img {
+position:absolute;
+  left:35%;
+  top:50px;
+  width:492px;
+  height:265px;
+}
+
+
+#h1_title {
+	position: absolute;
+	top: 315px;
+	left:35%;
+	width:500px;
+	height:auto;
+}
+
+#detail_desc {
+	position:absolute;
+	left:35%;
+	top:400px;
+	width:492px;
+	height:auto;
+}
+
+.btn {
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: orange;
+  padding: 10px 40px 10px 40px;
+  text-decoration: none;
+}
+
+#btn_div {
+	position:absolute;
+	margin-left:35%;
+	top:500px;
+	
+}
+
+#btn_div a{
+	margin-left:170px;
+}
+
+
+
+
+#info_dev {
+	position: absolute;
+	height: auto;
+	width: 70%;
+	left: 25%;
+	top: 540px;
+	bottom: 10%;
+}
+
+
+
+#infro_proj {
+	position:absolute;
+	height:auto;
+	left:47%;
+	top:540px;
+	bottom:10%;
+}
+
+#info_data {
+	position: absolute;
+	height: auto;
+	left: 76%;
+	top: 540px;
+	bottom: 10%;
+}
+
+
+
+

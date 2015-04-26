@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<style>
+
+svg text{
+  font-size:12px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+#tooltip {
+                position: absolute;
+                width: auto;
+                height: auto;
+                padding: 10px;
+                background-color: white;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+                -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+                box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+                pointer-events: none;
+            }
+            
+            #tooltip.hidden {
+                display: none;
+            }
+            
+            #tooltip p {
+                margin: 0;
+                font-family: sans-serif;
+                font-size: 16px;
+                line-height: 20px;
+            }
+			
+			rect{
+  				shape-rendering:crispEdges;
+			}
+
+			form {
+			    position: raletive;
+				text-align:center;
+			    left:20%;
+			    top: 0px;
+			}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+<link href="css/nationwide.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+
+<title>Nationwide</title>
+</head>
+
+<body>
+
+<header class="cd-header">
+		<nav class="cd-main-nav">
+			<ul>
+				<!-- inser more links here -->
+				<li><a href="index.html">Home</a></li>
+                <li><a href="nationwide.html">Bird's eye</a></li>
+				<li><a href="map.html">Map</a></li>
+				<li><a href="#0">Contact</a></li>
+			</ul>
+		</nav> <!-- cd-main-nav -->
+</header>
+
+
+
+<main class="cd-main-content">
+	<div class="cd-fixed-bg cd-bg-1">
+			<h1 style="color:white">Data in National Scale</h1>
+	</div> <!-- cd-fixed-bg -->
+    
+    
+    
+	<div class="cd-scrolling-bg cd-color-2">
+ 		<div class="cd-container">
+			<div id="stackchart">
+    		<form>
+  				<label><input type="radio" name="mode" value="grouped"> Grouped</label>
+  				<label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+			</form>
+			<div id="tooltip" class="hidden">
+            		<p><span id="catagory">Revenue</span></p>
+            		<p><span id="value">100</span></p>
+			</div>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="js/total.js"></script>
+	<script>
+	stack_chart("data/US_source.csv","Revenue",["Federal","State","Local"]);
+	//stack_chart("US_expend.csv","Expenditure",["Current Spending","Capital outlay","Other"]);
+// stack_chart("US_source.csv","Revenue");
+
+
+	</script>
+    </div><!--stackchart-->
+    </div>
+    </div>
+    
+    <div class="cd-fixed-bg cd-bg-2">
+			<h2>Revenue and Expenditure</h2>
+	</div> <!-- cd-fixed-bg -->
+    
+    
+    <div class="cd-scrolling-bg cd-color-3">
+ 	<div class="cd-container">
+    <div id="bypart">
+    <script src="js/biPartite.js"></script>
+	<script>
+		d3.csv("data/2012.csv", function(error, data) {
+		var revenue_data=[];
+		var expend_data = [];
+		data.forEach(function(d,i){
+	    revenue_data.push(['Federal',d.Name,Math.floor(+d['Federal sources']/1000)]);
+  		revenue_data.push(['State',d.Name,Math.floor(+d['State sources']/1000)]);
+  		revenue_data.push(['Local',d.Name,Math.floor(+d['Local sources']/1000)]);
+  		expend_data.push(['Current',d.Name,Math.floor(+d['Current spending']/1000)]);
+  		expend_data.push(['Capital',d.Name,Math.floor(+d['Capital outlay']/1000)]);
+  		expend_data.push(['Other',d.Name,Math.floor(+d['Other']/1000)]);
+
+        // console.log(min_state,max_state);
+      	});
+		console.log(revenue_data);
+
+		var width = 1200, height = 1000, margin ={b:0, t:40, l:150, r:50};
+
+		var svg = d3.select("#bypart")
+					  .append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+					  .append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+		var data = [ 
+  					{data:bP.partData(revenue_data,2), id:'Revenue', header:["Sourses","State", "Revenue"]},
+				    {data:bP.partData(expend_data,2), id:'Expend', header:["Costs","State", "Expenditure"]}
+		];
+
+		bP.draw(data, svg);
+
+		});
+	 </script>
+    
+    </div>
+    </div>
+    </div>
+    <div class="cd-fixed-bg cd-bg-3">
+			<a href="map.html"><h2>Expore Detials on Map View</h2></a>
+		</div> <!-- cd-fixed-bg -->
+
+
+
+</main>
+
+
+
+</body>
+</html>

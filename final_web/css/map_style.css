@@ -1,0 +1,381 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* {
+  margin: 0;
+}
+html, body {
+  background-color:#D4E8EF;
+  font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+ 
+}
+
+a {
+  color: #b4d7a8;
+  text-decoration: none;
+}
+
+
+/*--------------
+
+Header
+
+-----------*/
+.cd-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+.cd-header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cd-header #cd-logo {
+  float:left;
+  width:50px;
+  height:50px;
+}
+.cd-header #cd-logo img {
+  top:-10px;
+  max-height:95%;
+  max-width:95%;
+}
+@media only screen and (min-width: 768px) {
+  .cd-header {
+    height: 70px;
+  }
+  .cd-header #cd-logo {
+    margin: 23px 0 0 5%;
+  }
+}
+
+.cd-main-nav {
+  float: right;
+  margin-right: 5%;
+  width: 44px;
+  height: 100%;
+  background: url("../images/cd-icon-menu.svg") no-repeat center center;
+  background-size: 44px 44px;
+  cursor: pointer;
+}
+.cd-main-nav ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.cd-main-nav ul.is-visible {
+  -webkit-transform: translateY(50px);
+  -moz-transform: translateY(50px);
+  -ms-transform: translateY(50px);
+  -o-transform: translateY(50px);
+  transform: translateY(50px);
+}
+.cd-main-nav a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 5%;
+  background: #2f292a;
+  border-top: 1px solid #453c3d;
+  color: #8e7d7f;
+}
+@media only screen and (min-width: 768px) {
+  .cd-main-nav {
+    width: auto;
+    height: auto;
+    background: none;
+    cursor: auto;
+  }
+  .cd-main-nav ul {
+    position: static;
+    width: auto;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    line-height: 70px;
+  }
+  .cd-main-nav ul.is-visible {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .cd-main-nav li {
+    display: inline-block;
+    margin-left: 1em;
+  }
+  .cd-main-nav a {
+    display: inline-block;
+    height: auto;
+    line-height: normal;
+    background: transparent;
+    padding: .6em 1em;
+    border-top: none;
+    color: #3d3536;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+  .no-touch .cd-main-nav a:hover {
+    color: #99a478;
+  }
+}
+
+
+
+
+/*---------------
+
+main elements
+
+--------------*/
+
+
+#u0 {
+  position:absolute;
+  display:block;
+  left:0;
+  top:0px;
+  width:100%;
+  height:50px;
+  background-color: rgb(77,77,77);
+  opacity:0.7;
+
+}
+
+#u1 {
+	position: absolute;
+	top: 20px;
+	width: 100%;
+	height: 37px;
+	color: #FFFFFF;
+	text-align: center;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size: 20px;
+	}
+
+	
+	
+	
+	
+#map {
+  position:absolute;
+  left:15%;
+  top:70px;
+  width:960px;
+  height:600px;
+}
+
+#details {
+	position:absolute;
+  left:0px;
+  width:100%;
+  height:300px;
+  bottom:0%;
+  background-color:white;
+  /*opacity:;*/
+}
+
+#details_state_name {
+	position:absolute;
+	background-color:#f2963f;
+	left:70px;
+	height:40px;
+	width:240px;
+	bottom:240px;
+	color: #FFFFFF;
+	text-align: center;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size: 36px;
+	
+}
+
+#detials_info {
+	position:absolute;
+	left:70px;
+	height:220px;
+	width:35em;
+	bottom:2px;
+}
+
+#detials_info p {
+	color: #000000;
+	text-align: left;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size: 20px;
+
+}
+
+#charts {
+	position:absolute;
+	text-align:right;
+	right:200px;
+	bottom:0%;
+	width:600px;
+	height:300px;
+}
+
+#arrow-forward {
+	position:absolute;
+	right:3em;
+	bottom: 130px;
+	height:40px;
+	width:20px;
+	}
+#arrow-forward img {
+	max-height:100%;
+	mzx-width:99%;
+}
+
+#arrow-backward {
+	position:absolute;
+	left:2em;
+	bottom:130px;
+	height:35px;
+	width:20px;
+}
+#arrow-backward img {
+	max-height:100%;
+	mzx-width:100%;
+}
+
+#details a:hover img{ 
+   max-height:70%;
+	mzx-width:100%;
+}
+
+
+
+
+#closeBox {
+	position:absolute;
+	left:332px;
+	height:40px;
+	width:40px;
+	bottom:240px;
+}
+
+#categorySign {
+	
+	}
+
+
+#closeBox img {
+	max-height:95%;
+	max-width:95%;
+}
+.hidden {
+	display: none;
+}
+
+.detailv {
+	
+}
+
+#compareWithNation {
+	position:relative;
+	text-align:middle;
+	top:10px;
+	/*left:10px;*/
+	height:40px;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size: 20px;
+}
+
+
+#yearList {
+	position:absolute;
+	left:0;
+	top:70px;
+	width:170px;
+	background-color:rgb(77,77,77);
+	height:100%;
+	opacity:0.7;
+	
+}
+#yearList a:hover div{ 
+   background-color: #2dadf2;
+}
+
+#categoryButton {
+	/*top:100px;*/
+	/*background-color:#2dadf2;*/
+	margin-bottom:3px;
+	margin:4px;
+	color:white;
+	width:95%;
+	float:left;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+	font-size:20px;
+
+}
+
+
+#yearSpan {
+	position:absolute;
+	left:0;
+	top:100px;
+	width:100%;
+}
+
+#yearSpan a:hover p{ 
+   background-color: #2dadf2;
+}
+
+#yearSpan p {
+	color: white;
+	font-size:20px;
+	text-align:center;
+	/*background-color:"#f2963f";*/
+	margin:4px;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+
+}
+
+#yearListButton {
+	position: absolute;
+	top:3px;
+	left:20px;
+	width:50px;
+	height:50px;
+
+}
+
+#yearListButton img{
+	max-height:95%;
+	max-width:95%;
+}
+
+#stackchart {
+  top:10%;
+  left:10%;
+  width:1200px;
+  height:800px;
+}
+
+#def {
+}
+
+
+
+
+
+
+
+
