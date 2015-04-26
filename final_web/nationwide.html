@@ -89,6 +89,9 @@ svg text{
     
     
 	<div class="cd-scrolling-bg cd-color-2">
+		<div class="cd-fixed-bg cd-bg-1">
+			<h1 style="color:black">Revenue Sources</h1>
+		</div>
  		<div class="cd-container">
 			<div id="stackchart">
     		<form>
@@ -103,7 +106,7 @@ svg text{
 	<script src="js/total.js"></script>
 	<script>
 	stack_chart("data/US_source.csv","Revenue",["Federal","State","Local"]);
-	//stack_chart("US_expend.csv","Expenditure",["Current Spending","Capital outlay","Other"]);
+	// stack_chart("data/US_expend.csv","Expenditure",["Current Spending","Capital outlay","Other"]);
 // stack_chart("US_source.csv","Revenue");
 
 
@@ -111,9 +114,11 @@ svg text{
     </div><!--stackchart-->
     </div>
     </div>
+
+
     
     <div class="cd-fixed-bg cd-bg-2">
-			<h2>Revenue and Expenditure</h2>
+			<h2>Revenue and Expenditure by States</h2>
 	</div> <!-- cd-fixed-bg -->
     
     
