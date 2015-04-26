@@ -1,7 +1,7 @@
 # Final-Project-INF554-Information-Visualization
 **Team members: Wenxin Zhao, Bowen Huang**
 ## Topic: Public Education Finances in United States
-
+[Visualization Website]
 [Visualization Website]:http://www-scf.usc.edu/~bowenhua/
 
 Started by Feb. 20, 2015
