@@ -261,7 +261,7 @@
 	
 	var bar_chart = {};
 	var cname = "";
-	var filename="";
+	var filename="data/expend.json";
 	var yearSelected;  // valued
 	var yearSpanSelected;// = d3.select(this)
 	var cateSelected = "data/expend_year.csv";	 // value
