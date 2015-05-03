@@ -396,7 +396,7 @@ function categorySelect() {
 				cateSpanSelected.style("background-color","rgb(77,77,77)")
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/expend_year.csv";
-				cateSpanSelected.style("background-color","orange");
+				cateSpanSelected.style("background-color","#4099FF");
 			}
 		
 			
@@ -406,13 +406,13 @@ function categorySelect() {
 				console.log("n2");
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/revenue_year.csv";
-				cateSpanSelected.style("background-color","orange");
+				cateSpanSelected.style("background-color","#4099FF");
 			} else if (cateSelected !== "data/revenue_year.csv"){
 				console.log("y2");
 				cateSpanSelected.style("background-color","rgb(77,77,77)")
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/revenue_year.csv";
-				cateSpanSelected.style("background-color","orange");
+				cateSpanSelected.style("background-color","#4099FF");
 			}
 		
 		}
