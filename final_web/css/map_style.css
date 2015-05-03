@@ -225,9 +225,9 @@ main elements
 #charts {
 	position:absolute;
 	text-align:right;
-	right:200px;
+	right:100px;
 	bottom:0%;
-	width:600px;
+	width:700px;
 	height:300px;
 }
 
@@ -292,6 +292,7 @@ main elements
 	position:relative;
 	text-align:middle;
 	top:10px;
+  width:280px;
 	/*left:10px;*/
 	height:40px;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;

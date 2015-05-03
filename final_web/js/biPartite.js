@@ -120,12 +120,13 @@
 			
 		mainbar.append("text").attr("class","barlabel")
 			.attr("x", c1[p]).attr("y",function(d){ return d.middle+5;})
+			.attr("width",10)
 			.text(function(d,i){ return data.keys[p][i];})
 			.attr("text-anchor","start" );
 			
 		mainbar.append("text").attr("class","barvalue")
 			.attr("x", c2[p]).attr("y",function(d){ return d.middle+5;})
-			.text(function(d,i){ return d.value ;})
+			.text(function(d,i){ return (d.value).toFixed(1) ;})
 			.attr("text-anchor","end");
 			
 		mainbar.append("text").attr("class","barpercent")

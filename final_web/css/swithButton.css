@@ -2,9 +2,9 @@
 /* CSS Document */
 .onoffswitch {
     position: relative; 
-    top:-27px;
+    top:-25px;
     width: 71px;
-    left:280px;
+    left:290px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {

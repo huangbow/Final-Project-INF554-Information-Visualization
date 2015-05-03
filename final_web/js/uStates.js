@@ -454,13 +454,13 @@ function categorySelect() {
 	
 	
     bar_chart.state = function(filename,countryname){
-        var w = 600;
+        var w = 700;
         var h = 300;
-        var margin = { left: w/2, other:h/10 }
-        var width_single = w/40;
-		var width_double = w/70;
+        var margin = { left: 210, other:h/10 }
+        var width_single = w/30;
+		var width_double = w/50;
         if (filename == "data/revenue.json") var catagory = "Revenue";
-        else var catagory = "Expenditure";
+        else var catagory = "Expenditures";
 
         //Create SVG element
         var svg = d3.select("#charts")
@@ -477,30 +477,30 @@ function categorySelect() {
         d3.json(filename, function(json) { 
             for (var i = 0; i < json.length; i++){
                 if (json[i].country == countryname){
-                    dataset.push(+json[i].YR2002);
-                    dataset.push(+json[i].YR2003);
-                    dataset.push(+json[i].YR2004);
-                    dataset.push(+json[i].YR2005);
-                    dataset.push(+json[i].YR2006);
-                    dataset.push(+json[i].YR2007);
-                    dataset.push(+json[i].YR2008);
-                    dataset.push(+json[i].YR2009);
-                    dataset.push(+json[i].YR2010);
-                    dataset.push(+json[i].YR2011);
-                    dataset.push(+json[i].YR2012);
+                    dataset.push(+json[i].YR2002/1000000);
+                    dataset.push(+json[i].YR2003/1000000);
+                    dataset.push(+json[i].YR2004/1000000);
+                    dataset.push(+json[i].YR2005/1000000);
+                    dataset.push(+json[i].YR2006/1000000);
+                    dataset.push(+json[i].YR2007/1000000);
+                    dataset.push(+json[i].YR2008/1000000);
+                    dataset.push(+json[i].YR2009/1000000);
+                    dataset.push(+json[i].YR2010/1000000);
+                    dataset.push(+json[i].YR2011/1000000);
+                    dataset.push(+json[i].YR2012/1000000);
                     }
                 if (json[i].country == "Average"){
-                    average.push(+json[i].YR2002);
-                    average.push(+json[i].YR2003);
-                    average.push(+json[i].YR2004);
-                    average.push(+json[i].YR2005);
-                    average.push(+json[i].YR2006);
-                    average.push(+json[i].YR2007);
-                    average.push(+json[i].YR2008);
-                    average.push(+json[i].YR2009);
-                    average.push(+json[i].YR2010);
-                    average.push(+json[i].YR2011);
-                    average.push(+json[i].YR2012);
+                    average.push(+json[i].YR2002/1000000);
+                    average.push(+json[i].YR2003/1000000);
+                    average.push(+json[i].YR2004/1000000);
+                    average.push(+json[i].YR2005/1000000);
+                    average.push(+json[i].YR2006/1000000);
+                    average.push(+json[i].YR2007/1000000);
+                    average.push(+json[i].YR2008/1000000);
+                    average.push(+json[i].YR2009/1000000);
+                    average.push(+json[i].YR2010/1000000);
+                    average.push(+json[i].YR2011/1000000);
+                    average.push(+json[i].YR2012/1000000);
                     }
             }
             console.log(dataset); //Log output to console
@@ -533,6 +533,18 @@ function categorySelect() {
                     .scale(yScale)
                     .orient("left")
                     .ticks(8);
+
+            svg.append("text")
+                    .text("Billions of dollars")
+                    .attr("x", 150)
+                    .attr("y", 20)
+                    .attr("font-size", 12);
+
+            svg.append("text")
+                    .text("Year")
+                    .attr("x", 450)
+                    .attr("y", h-5)
+                    .attr("font-size", 12);
 
             svg.selectAll("whatever")
                     .data(dataset)
@@ -567,13 +579,13 @@ function categorySelect() {
                             //Update the tooltip position and value
                             d3.select("#tooltip1")                   
                                 .select("#country")
-                                .text(countryname + " in " + (2002+i));
+                                .text("in " + (2002+i));
 
                             //Update the tooltip position and value
                             d3.select("#tooltip1")                   
                                 .select("#value")
                                 // .text("$ "+Math.floor(d/1000000)+"M");
-                                .text("$" + d);
+                                .text(d.toFixed(1) + " billions");
 
                             //Show the tooltip
                             d3.select("#tooltip1").classed("hidden", false);
@@ -657,13 +669,13 @@ function categorySelect() {
                             //Update the tooltip position and value
                             d3.select("#tooltip1")                   
                                 .select("#country")
-                                .text("U.S. Average in " + (2002+i));
+                                .text("in " + (2002+i));
 
                             //Update the tooltip position and value
                             d3.select("#tooltip1")                   
                                 .select("#value")
                                 // .text("$ "+Math.floor(d/1000000)+"M");
-                                .text("$" + d);
+                                .text(d.toFixed(1) + " billions");
 
 
                             //Show the tooltip
@@ -677,7 +689,7 @@ function categorySelect() {
 
                     svg.append("rect")
                         .attr("class","avg")
-                        .attr("x", w/8)
+                        .attr("x", 0)
                         .attr("y", 2*h/5)
                         .attr("width", w/20)
                         .attr("height", h/15)
@@ -686,12 +698,12 @@ function categorySelect() {
                     svg.append("text")
                         .text(countryname)
                         .attr("class","avg")
-                        .attr("x", w/8 + w/20 + 10)
+                        .attr("x", 50)
                         .attr("y", 2*h/5 + 15);
 
                     svg.append("rect")
                         .attr("class","avg")
-                        .attr("x", w/8)
+                        .attr("x", 0)
                         .attr("y", h/5)
                         .attr("width", w/20)
                         .attr("height", h/15)
@@ -700,7 +712,7 @@ function categorySelect() {
                     svg.append("text")
                         .text("U.S. Average")
                         .attr("class","avg")
-                        .attr("x", w/8 + w/20 + 10)
+                        .attr("x", 50)
                         .attr("y", h/5 + 15);
 
 
