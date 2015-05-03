@@ -5,7 +5,7 @@
   margin: 0;
 }
 html, body {
-  background-color:#D4E8EF;
+  background-color:white;
   font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
  
 }
@@ -131,7 +131,8 @@ Header
     font-weight: bold;
     font-size: 14px;
     font-size: 0.875rem;
-  }
+  }  
+  
   .no-touch .cd-main-nav a:hover {
     color: #99a478;
   }
@@ -146,38 +147,28 @@ main elements
 
 --------------*/
 
-
-#u0 {
-  position:absolute;
-  display:block;
-  left:0;
-  top:0px;
-  width:100%;
-  height:50px;
-  background-color: rgb(77,77,77);
-  opacity:0.7;
-
+#map_title {
+	position:absolute;
+	width:960px;
+	height:50px;
+	left:15%;
+	text-align:center;
+	top:90px;
+	
 }
 
-#u1 {
-	position: absolute;
-	top: 20px;
-	width: 100%;
-	height: 37px;
-	color: #FFFFFF;
-	text-align: center;
+#map_title p {
+	color: #000000;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
-	font-size: 20px;
-	}
+	font-size: 30px;
 
-	
-	
+}
 	
 	
 #map {
   position:absolute;
   left:15%;
-  top:70px;
+  top:130px;
   width:960px;
   height:600px;
 }
@@ -331,7 +322,7 @@ main elements
 #yearSpan {
 	position:absolute;
 	left:0;
-	top:100px;
+	top:70px;
 	width:100%;
 }
 

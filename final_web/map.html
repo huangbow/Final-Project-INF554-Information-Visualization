@@ -122,13 +122,13 @@
 </header>
   
   <script>
-  var temp=0;
+  var temp=1;
   function showSideBar() {
   if (temp == 0) {
-   d3.select('#yearList').transition().duration(1000).style("opacity", .6);
+   d3.select('#yearList').transition().duration(1000).style("opacity", .7);
    d3.select('#yearList').classed("hidden",false);
    temp = 1;
-  } else {
+  } else if (temp == 1) {
   d3.select('#yearList').classed("hidden",true);
   d3.select('#yearList').transition().duration(1000).style("opacity", 0);
   temp = 0;
@@ -141,8 +141,8 @@
   </script>
 
   <div class="page-wrap">
-   <div id="yearList" class="hidden">
-   <a href="#" style="text-decoration:none"><div id="categoryButton" value="data/expend.json" style="background-color:#733700">Expenditure</div></a>
+   <div id="yearList">
+   <a href="#" style="text-decoration:none"><div id="categoryButton" value="data/expend.json" style="background-color:orange">Expenditures</div></a>
    <a href="#" style="text-decoration:none"><div id="categoryButton" value="data/revenue.json">Revenue</div></a>
    <div id="yearSpan"></div>
    <script src="js/uStates.js"></script>
@@ -151,7 +151,9 @@
   <div id="tooltip"></div><!--problem with the d3.event3.pageX-->
   <svg width="960" height="600" id="statesvg"></svg>
   </div>
-  
+  <div id="map_title">
+  	<p>Public school system <span id="title_cate">expenditures</span> (<span id="title_year">2002</span>)</p>
+  </div>
   
   <div id="details">
   <a href="#"><div id="arrow-forward" class="arrow">
@@ -187,21 +189,6 @@
     
   }
 
-  
-        
-        var temp=0;
-        function showSideBar() {
-          if (temp == 0) {
-           d3.select('#yearList').transition().duration(1000).style("opacity", .9);
-           d3.select('#yearList').classed("hidden",false);
-           temp = 1;
-         } else {
-           d3.select('#yearList').classed("hidden",true);
-           d3.select('#yearList').transition().duration(1000).style("opacity", 0);
-           temp = 0;
-         }
-       }
-       
        
        
        </script>
@@ -273,7 +260,7 @@
           mid=Math.round(100*Math.random()), 
           high=Math.round(100*Math.random());
           sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
-           avg:Math.round((low+mid+high)/3), color:d3.interpolate("#fcead8", "#733700")(Scale(dataset[d]))
+           avg:Math.round((low+mid+high)/3), color:d3.interpolate("rgb(252,241,243)", "rgb(145,9,60)")(Scale(dataset[d]))
            
          }; 
              // console.log(Scale(dataset[d]));

@@ -271,8 +271,6 @@
 	
 	var currentColor;
 	var thisPoint;
-	
-	
 		
 	d3.select("#details").selectAll(".arrow")
 		.on("click",arrowClick);
@@ -298,7 +296,7 @@
 				.attr("id","def")
 				.style("background-color",function(d) {
 					if (d.year=="2002"){
-						return "#733700";
+						return "orange";
 						}
 						
 					})
@@ -309,21 +307,29 @@
 						yearSpanSelected.style("background-color","rgb(77,77,77)");
 						yearSelected = d.year;
 						yearSpanSelected = d3.select(this);
-						yearSpanSelected.style("background-color","#733700");
+						yearSpanSelected.style("background-color","orange");
 						
 						
 					} else if (yearSelected !== d.year) {
 						yearSpanSelected.style("background-color","rgb(77,77,77)");
 						yearSpanSelected = d3.select(this);
 						yearSelected = d.year;
-						yearSpanSelected.style("background-color","#733700");	
+						yearSpanSelected.style("background-color","orange");	
 					}
-					if (d3.select("#categoryButton").style("background-color") == "rgb(115, 55, 0)") {
+					if (d3.select("#categoryButton").style("background-color") == "orange") {
 						cate = "data/expend_year.csv";
-						}else if(d3.select("#categoryButton").style("background-color") != "rgb(115, 55, 0)"){
+						}else if(d3.select("#categoryButton").style("background-color") != "orange"){
 						cate = "data/revenue_year.csv";
 						}
-					clickyear(yearSelected,cate);
+						
+						d3.select("#map_title #title_year")
+							.transition()
+							.duration(1000)
+							.text(function(d) {
+							return yearSelected;
+						});
+						
+						clickyear(yearSelected,cate);
 					
 					});
 				}
@@ -365,7 +371,8 @@ function clickyear(year,cate) {
 		d3.select("#statesvg").selectAll("path").data(uStatePaths)
 						.transition().duration(50)
 						.style("fill", function(d) {
-							return d3.interpolate("#fcead8", "#733700")(datasets[d.id]);					
+							//return d3.interpolate("#fcead8", "#733700")(datasets[d.id]);
+							return d3.interpolate("rgb(252,241,243)", "rgb(145,9,60)")(datasets[d.id]);						
 			});
 		});
 		
@@ -375,7 +382,6 @@ function clickyear(year,cate) {
 	
 
 function categorySelect() {
-	  var yearL= ["2002","2003","2004","2005"];
 		var selectValue = d3.select(this).attr("value");
 		filename = selectValue;
 		if (filename == "data/expend.json") {
@@ -384,13 +390,13 @@ function categorySelect() {
 				console.log("n1");
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/expend_year.csv";
-				cateSpanSelected.style("background-color","#733700");
+				cateSpanSelected.style("background-color","orange");
 			} else if (cateSelected !== "data/expend_year.csv"){
 				console.log("y1");
 				cateSpanSelected.style("background-color","rgb(77,77,77)")
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/expend_year.csv";
-				cateSpanSelected.style("background-color","#733700");
+				cateSpanSelected.style("background-color","orange");
 			}
 		
 			
@@ -400,18 +406,29 @@ function categorySelect() {
 				console.log("n2");
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/revenue_year.csv";
-				cateSpanSelected.style("background-color","#733700");
+				cateSpanSelected.style("background-color","orange");
 			} else if (cateSelected !== "data/revenue_year.csv"){
 				console.log("y2");
 				cateSpanSelected.style("background-color","rgb(77,77,77)")
 				cateSpanSelected = d3.select(this);
 				cateSelected = "data/revenue_year.csv";
-				cateSpanSelected.style("background-color","#733700");
+				cateSpanSelected.style("background-color","orange");
 			}
 		
 		}
 		
-		}
+		d3.select("#map_title #title_cate")
+		  .transition()
+		  .duration(1000)
+		  .text(function(d) {
+			  if (cateSelected == "data/revenue_year.csv"){
+				return "revenue";
+			  } else {
+			  	return "expenditures";
+			  }
+		  });
+		
+}
 		
 		
 
