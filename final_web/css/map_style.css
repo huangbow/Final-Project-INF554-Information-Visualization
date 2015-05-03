@@ -189,7 +189,7 @@ main elements
 
 #details_state_name {
 	position:absolute;
-	background-color:#f2963f;
+	background-color:#8BB4FF;
 	left:70px;
 	height:40px;
 	width:240px;
@@ -306,7 +306,7 @@ main elements
 	
 }
 #yearList a:hover div{ 
-   background-color: #2dadf2;
+   background-color: #4099FF;
 }
 
 #categoryButton {
@@ -331,7 +331,7 @@ main elements
 }
 
 #yearSpan a:hover p{ 
-   background-color: #2dadf2;
+   background-color: #4099FF;
 }
 
 #yearSpan p {
