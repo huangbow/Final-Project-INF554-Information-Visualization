@@ -431,9 +431,9 @@ function categorySelect() {
 		  .duration(1000)
 		  .text(function(d) {
 			  if (cateSelected == "data/revenue_year.csv"){
-				return "revenue";
+				return "Revenue";
 			  } else {
-			  	return "expenditures";
+			  	return "Expenditures";
 			  }
 		  });
 		var syear = d3.select("#map_title #title_year").html();
