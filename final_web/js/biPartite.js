@@ -190,7 +190,7 @@
 			.attr("y",function(d){ return d.middle+5;});
 			
 		mainbar.select(".barvalue").transition().duration(500)
-			.attr("y",function(d){ return d.middle+5;}).text(function(d,i){ return d.value ;});
+			.attr("y",function(d){ return d.middle+5;}).text(function(d,i){ return (d.value).toFixed(1) ;});
 			
 		mainbar.select(".barpercent").transition().duration(500)
 			.attr("y",function(d){ return d.middle+5;})
