@@ -161,6 +161,10 @@ Main components
     font-size: 14px;
     font-size: 0.875rem;
   }
+  .cd-main-nav a:hover {
+    color:orange;
+  }
+  
   .no-touch .cd-main-nav a:hover {
     color: #99a478;
   }

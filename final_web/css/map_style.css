@@ -133,6 +133,10 @@ Header
     font-size: 0.875rem;
   }  
   
+  .cd-main-nav a:hover {
+    color:orange;
+  }
+  
   .no-touch .cd-main-nav a:hover {
     color: #99a478;
   }
