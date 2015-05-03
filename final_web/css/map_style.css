@@ -182,18 +182,18 @@ main elements
 
 #range_high {
   position:absolute;
-  right:5.5%;
-  top:180px;
-  width:30px;
+  right:3%;
+  top:165px;
+  width:80px;
   height:15px;
   text-align:center;
 }
 
 #range_low {
   position:absolute;
-  right:5.5%;
+  right:3%;
   top:505px;
-  width:30px;
+  width:80px;
   height:15px;
   text-align:center;
 }

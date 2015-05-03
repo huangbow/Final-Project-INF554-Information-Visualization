@@ -36,3 +36,12 @@
   color: black;
 	
 }
+
+
+
+#gotomap h2:hover{
+	color:black;
+	background-color:rgb(251,239,242);
+	border-radius: 20px;
+	opacity:0.6;
+}

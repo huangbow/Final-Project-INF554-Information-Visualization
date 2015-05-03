@@ -358,11 +358,11 @@ function clickyear(year,cate) {
       });
 	  	d3.select("#range_high")
 		  	.text(function(d) {
-				return (max_state/10000000).toFixed(2);
+				return (max_state/10000000).toFixed(2)+" billion";
 				});
 		d3.select("#range_low")
 		  	.text(function(d) {
-				return (min_state/10000000).toFixed(2);
+				return (min_state/10000000).toFixed(2)+" billion";
 				});
 	  
         var Scale = d3.scale.linear()
@@ -805,8 +805,8 @@ function categorySelect() {
         function mouseOver(d) {
             d3.select("#tooltip").transition().duration(200).style("opacity", .9);
             d3.select("#tooltip").html(toolTip(d.n, data[d.id])) 
-            .style("left", (d3.event.pageX-200) + "px") 
-            .style("top", (d3.event.pageY - 100) + "px");
+            .style("left", (d3.event.pageX-170) + "px") 
+            .style("top", (d3.event.pageY-180) + "px");
 
             
         }

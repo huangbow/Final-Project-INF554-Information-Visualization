@@ -86,7 +86,7 @@ var rect = layer.selectAll("rect")
                             //Update the tooltip position and value
                             d3.select("#tooltip")                   
                                 .select("#value")
-                                .text(d.y.toFixed(1) + " billions");
+                                .text(d.y.toFixed(1) + " billion");
 
                             //Show the tooltip
                             d3.select("#tooltip").classed("hidden", false);
@@ -131,7 +131,7 @@ svg.append("g")
                         .attr("fill", color(2));
 
                     svg.append("text")
-                        .text("Billions of dollars")
+                        .text("Billion of dollars")
                         .attr("x", 30)
                         .attr("y", 0);
                     svg.append("text")
