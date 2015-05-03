@@ -356,6 +356,15 @@ function clickyear(year,cate) {
         		min_state = d3.min([min_state,+datasets[d]])
         // console.log(min_state,max_state);
       });
+	  	d3.select("#range_high")
+		  	.text(function(d) {
+				return (max_state/10000000).toFixed(2);
+				});
+		d3.select("#range_low")
+		  	.text(function(d) {
+				return (min_state/10000000).toFixed(2);
+				});
+	  
         var Scale = d3.scale.linear()
                     .domain([min_state,max_state])
                     .range([0,1]);
@@ -427,6 +436,8 @@ function categorySelect() {
 			  	return "expenditures";
 			  }
 		  });
+		var syear = d3.select("#map_title #title_year").html();
+		clickyear(syear,cateSelected);
 		
 }
 		

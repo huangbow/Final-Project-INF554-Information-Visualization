@@ -167,7 +167,37 @@ main elements
 	font-size: 30px;
 
 }
-	
+
+
+#color_range {
+  position:absolute;
+  right:5%;
+  top:200px;
+  width:30px;
+  height:300px;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(145,9,60)), to(rgb(252,241,243)));
+  border-style: solid;
+  border-width: 1px;
+}
+
+#range_high {
+  position:absolute;
+  right:5.5%;
+  top:180px;
+  width:30px;
+  height:15px;
+  text-align:center;
+}
+
+#range_low {
+  position:absolute;
+  right:5.5%;
+  top:505px;
+  width:30px;
+  height:15px;
+  text-align:center;
+}
+
 	
 #map {
   position:absolute;
@@ -367,6 +397,9 @@ main elements
 
 #def {
 }
+
+
+
 
 
 
