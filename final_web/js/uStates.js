@@ -296,7 +296,7 @@
 				.attr("id","def")
 				.style("background-color",function(d) {
 					if (d.year=="2002"){
-						return "orange";
+						return "#4099FF";
 						}
 						
 					})
@@ -307,18 +307,18 @@
 						yearSpanSelected.style("background-color","rgb(77,77,77)");
 						yearSelected = d.year;
 						yearSpanSelected = d3.select(this);
-						yearSpanSelected.style("background-color","orange");
+						yearSpanSelected.style("background-color","#4099FF");
 						
 						
 					} else if (yearSelected !== d.year) {
 						yearSpanSelected.style("background-color","rgb(77,77,77)");
 						yearSpanSelected = d3.select(this);
 						yearSelected = d.year;
-						yearSpanSelected.style("background-color","orange");	
+						yearSpanSelected.style("background-color","#4099FF");	
 					}
-					if (d3.select("#categoryButton").style("background-color") == "orange") {
+					if (d3.select("#categoryButton").style("background-color") == "#4099FF") {
 						cate = "data/expend_year.csv";
-						}else if(d3.select("#categoryButton").style("background-color") != "orange"){
+						}else if(d3.select("#categoryButton").style("background-color") != "#4099FF"){
 						cate = "data/revenue_year.csv";
 						}
 						
@@ -577,7 +577,7 @@ function categorySelect() {
                     .attr("height", function(d) {
                         return yScale(min_data*0.9)-yScale(d);
                     })
-                    .attr("fill", "#f2963f")
+                    .attr("fill", "#8BB4FF")
                     .on("mouseover", function(d,i) {
 
                         d3.select(this).transition().duration(500).attr("opacity", "0.7");
@@ -668,7 +668,7 @@ function categorySelect() {
                         .attr("height", function(d) {
                             return yScale(Min*0.9)-yScale(d);
                         })
-                        .attr("fill", "#2dadf2")
+                        .attr("fill", "rgb(77,77,77)")
                         .on("mouseover", function(d,i) {
                             d3.select(this).transition().duration(500).attr("opacity", "0.7")
 
@@ -710,7 +710,7 @@ function categorySelect() {
                         .attr("y", 2*h/5)
                         .attr("width", w/20)
                         .attr("height", h/15)
-                        .attr("fill", "#f2963f");
+                        .attr("fill", "#8BB4FF");
 
                     svg.append("text")
                         .text(countryname)
@@ -724,7 +724,7 @@ function categorySelect() {
                         .attr("y", h/5)
                         .attr("width", w/20)
                         .attr("height", h/15)
-                        .attr("fill", "#2dadf2");
+                        .attr("fill", "rgb(77,77,77)");
 
                     svg.append("text")
                         .text("U.S. Average")
@@ -814,7 +814,7 @@ function categorySelect() {
 				
 				thisPoint=d3.select(this);
 				currentColor = d3.select(this).style("fill");
-				d3.select(this).transition().duration(500).style("fill", "#f2963f");
+				d3.select(this).transition().duration(500).style("fill", "#8BB4FF");
 				
 						
 				//console.log(d3.select(this).html(this));

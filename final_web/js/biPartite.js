@@ -2,9 +2,12 @@
 	var bP={};	
 	var b=30, bb=130, height=1000, buffMargin=1, minHeight=10,start = 5;
 	var c1=[-130, 40], c2=[-35, 205], c3=[0, 240]; //Column positions of labels.
-	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
+	var colors =["#3366CC", "#DC3912",  "#FF9900"];
+	// var colors;
 	
 	bP.partData = function(data,p){
+		// console.log(colors);
+		// colors = c;
 		var sData={};
 		
 		sData.keys=[

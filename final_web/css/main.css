@@ -2,6 +2,10 @@
 /* CSS Document */
 
 
+body{
+	height:100%;
+	width:100%;
+}
 
 #u0_img {
 position:absolute;
@@ -80,6 +84,22 @@ position:absolute;
 	top: 540px;
 	bottom: 10%;
 }
+
+#bd_container {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#bgimg {
+	margin-left:45px;
+	max-height:100%;
+	max-width:100%;
+
+}
+
 
 
 
