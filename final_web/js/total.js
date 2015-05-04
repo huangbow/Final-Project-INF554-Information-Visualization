@@ -86,7 +86,7 @@ var rect = layer.selectAll("rect")
                             //Update the tooltip position and value
                             d3.select("#tooltip")                   
                                 .select("#value")
-                                .text(d.y.toFixed(1) + " billions");
+                                .text(d.y.toFixed(1) + " billion");
 
                             //Show the tooltip
                             d3.select("#tooltip").classed("hidden", false);

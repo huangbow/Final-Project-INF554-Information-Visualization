@@ -613,7 +613,7 @@ function categorySelect() {
                             d3.select("#tooltip1")                   
                                 .select("#value")
                                 // .text("$ "+Math.floor(d/1000000)+"M");
-                                .text(d.toFixed(1) + " billions");
+                                .text(d.toFixed(1) + " billion");
 
                             //Show the tooltip
                             d3.select("#tooltip1").classed("hidden", false);
